@@ -1,0 +1,39 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block title %}
+contact page
+{% endblock title %}
+
+{% block content %}
+<div class="col-md-10 mx-auto">
+    <h1 class=" my-5 text-white text-capitalize"> contact page</h1>
+
+
+    <div class="card shadow-lg p-4">
+        <form>
+            <div class="mb-3 row">
+              <div class="col-md-6">
+                  <label for="">Firstname</label>
+                  <input type="text" name="fn" class=" form-control ">
+              </div>
+              <div class="col-md-6">
+                <label for="">Firstname</label>
+                <input type="text" name="ln" class=" form-control ">
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div> 
+            <div class="mb-3">
+                <label for="">Messagge</label>
+                <textarea name="msg" class=" form-control" id="" cols="30" rows="5"></textarea>    
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form> 
+    </div>
+
+
+</div>
+{% endblock content %}

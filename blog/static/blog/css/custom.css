@@ -1,0 +1,19 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    background-color:rgb(75,74,74);
+    height: 100vh;
+    width: 100%;
+} 
+
+.myjumbotron {
+    width: 100%;
+    border: 1px solid aliceblue;
+    padding: 20px;
+    box-shadow: 2px -1px 35px 4px #dacccc;
+    background-color: #686565d6;
+}
