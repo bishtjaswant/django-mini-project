@@ -1,0 +1,51 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block title %}
+home  add post
+{% endblock title %}
+ 
+{% block content %}
+<div class="col-md-10 mx-auto">
+    <h1 class=" my-5 text-white text-capitalize"> dashboard page</h1>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+          <li class="breadcrumb-item">Add post</li>
+        </ol>
+      </nav>
+
+
+      <hr/>
+<div  class=" card shadow-lg p-4">
+<p  class="font-weight-bold text-danger text-capitalize">add post information</p>
+
+
+<form action="{% url 'addpost' %}" novalidate method="post">
+{% csrf_token %}
+      {% for field in form  %}
+        <div class="form-group mb-3">
+            {{field.label_tag}}
+            {{field}}
+            <strong class=" text-danger">  {{field.errors|striptags}} </strong>
+        </div>
+      {% endfor %}
+
+      
+  {% if form.non_field_errors %}
+  <div class="non-field-errors">
+    {% for err in form.non_field_errors %}
+      <p class="alert  alert-danger">{{ err }}</p>
+    {% endfor %}
+  </div>
+{% endif %}
+
+
+    <input type="submit" value="add post" class=" btn btn-primary">
+</form>
+
+</div>
+
+
+
+</div>
+{% endblock content %}

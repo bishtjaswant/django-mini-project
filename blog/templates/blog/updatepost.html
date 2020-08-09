@@ -1,0 +1,61 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block title %}
+home  update post
+{% endblock title %}
+ 
+{% block content %}
+<div class="col-md-10 mx-auto">
+    <h1 class=" my-5 text-white text-capitalize"> dashboard page</h1>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+          <li class="breadcrumb-item">Update post</li>
+        </ol>
+      </nav>
+
+<div class="alert text-capitalize  text-center font-weight-bold alert-info d-flex justify-content-between">
+<a href="{% url 'dashboard' %}" class=" btn btn-info">back</a>
+<p  class="font-weight-bold text-danger text-capitalize">Update post information</p>
+ 
+</div>
+
+<hr/>
+<div  class=" card shadow-lg p-4">
+
+<form action="{% url 'updatepost'  data.id %}" novalidate method="post">
+{% csrf_token %}
+      {% for field in form  %}
+        <div class="form-group mb-3">
+            {{field.label_tag}}
+            {{field}}
+            <strong class=" text-danger">  {{field.errors|striptags}} </strong>
+        </div>
+      {% endfor %}
+
+      
+  {% if form.non_field_errors %}
+  <div class="non-field-errors">
+    {% for err in form.non_field_errors %}
+      <p class="alert  alert-danger">{{ err }}</p>
+    {% endfor %}
+  </div>
+{% endif %}
+
+
+
+  {% if data.id %}
+   <input type="submit" value="update post" class=" btn btn-primary">
+  {% else %}
+   <input type="submit" value="add post" class=" btn btn-primary">
+  {% endif %}
+   
+
+</form>
+
+</div>
+
+
+
+</div>
+{% endblock content %}

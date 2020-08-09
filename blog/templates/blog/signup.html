@@ -1,36 +1,31 @@
 {% extends 'blog/base.html' %}
 {% load static %}
 {% block title %}
-home login into account
+home create account
 {% endblock title %}
 
 {% block content %}
 <div class="col-md-10 mx-auto">
-    <h1 class=" my-5 text-white text-capitalize"> login into account </h1>
+    <h1 class=" my-5 text-white text-capitalize"> sign up</h1>
 
 
-{% if messages %}
-    {% for message in messages %}
-    <div class="alert alert-primary text-capitalize"> {{message}} </div>
-   {% endfor %}
-
-{% endif %}
-
-<form action="{% url 'login' %}" method="post" novalidate>
+<form action="{% url 'create' %}" method="post" novalidate>
 
 {% csrf_token %}
   {% for field in form  %}
     <div class="form-group mb-3">
         {{field.label_tag}}
         {{field}}
-        <strong class=" text-danger">  {{field.errors|striptags}}        </strong>
+        <strong class="text-danger">
+        {{field.errors|striptags}}
+        </strong>
     </div>
   {% endfor %}
   
   {% if form.non_field_errors %}
   <div class="non-field-errors">
     {% for err in form.non_field_errors %}
-      <p class="alert  alert-danger">{{ err }}</p>
+      <p class="form-error">{{ err }}</p>
     {% endfor %}
   </div>
 {% endif %}

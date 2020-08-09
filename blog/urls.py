@@ -10,4 +10,7 @@ urlpatterns = [
     path("login/", views.loginuser, name="login"),
     path("logout/", views.logoutuser, name="logout"),
     path("create/", views.createaccount, name="create"),
+    path("addpost/", views.addpost, name="addpost"),
+    path("deletepost/<int:post_id>/", views.deletepost, name="deletepost"),
+    path("updatepost/<int:post_id>/", views.updatepost, name="updatepost"),
 ]

@@ -8,11 +8,17 @@ home
 <div class="col-md-10 mx-auto">
     <h1 class=" my-5 text-white text-capitalize"> home page</h1>
 
-
-    <div class="myjumbotron">
-        <h3 class=" display-2 text-capitalize text-white">hello worlpd</h3>
-        <p class="lead"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque fugit rerum maiores molestiae aliquid nihil error est facilis, enim dignissimos aspernatur, placeat suscipit. Laboriosam ratione velit esse, id inventore aut quisquam corporis fugit!
-        </p>
+      
+{% for post  in posts %}
+ <div class="myjumbotron my-4">
+        <h3 class=" display-2 text-capitalize text-white">{{post.title}}</h3>
+        <p class="lead">  {{post.description}} </p>
     </div>
+{% empty %}
+<p class="text-center text-white text-uppercase">posts  not found</p>
+
+{% endfor %}
+
+   
 </div>
 {% endblock content %}
