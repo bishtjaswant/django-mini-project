@@ -15,10 +15,12 @@ home  dashboard
 
 
       <hr/>
-<div class="alert text-capitalize  text-center font-weight-bold alert-info d-flex justify-content-between">
-<a href="{% url 'addpost' %}" class=" btn btn-info">Add post</a>
-<p>show post information</p>
-</div>
+
+
+        <div class="alert text-capitalize  text-center font-weight-bold alert-info d-flex justify-content-between">
+        <a href="{% url 'addpost' %}" class=" btn btn-info">Add post</a>
+        <p>show post information</p>
+        </div>
 
 
 {% if messages %}
@@ -49,7 +51,11 @@ home  dashboard
                         <td scope="row">{{post.posted}}</td>
                           <td>
                               <a href="{% url 'updatepost' post.id %}" class="btn btn-primary">edit</a>
+                              
+                              {% if perms.blog.delete_post %}
                               <a href="{% url 'deletepost' post.id %}" class="btn btn-danger">delete</a>
+                              {% endif %}                     
+                          
                           </td>
                     </tr>
             {% empty %}

@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login,logout
 from blog.models import Post
 from blog.forms import SignUpForm,LoginForm,PostForm
-
+from django.contrib.auth.models import Group
 # Create your views here.
 def home(request):
     posts = Post.objects.all()
@@ -131,7 +131,9 @@ def createaccount(request):
     if request.method=='POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
-            form.save()
+            myuser= form.save()
+            author_group = Group.objects.get(name='author') 
+            myuser.groups.add(author_group)
             messages.success(request,'your account created. now you can login into your account')
             return HttpResponseRedirect('/login')
     context = {}
